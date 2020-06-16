@@ -47,15 +47,15 @@ function createChessBoard() {
             boardPart.addEventListener('click', play);
         }
     }
-    createChess(3, 4);
-    createChess(4, 3);
+    createPiece(3, 4);
+    createPiece(4, 3);
     turn = 2;
-    createChess(3, 3);
-    createChess(4, 4);
+    createPiece(3, 3);
+    createPiece(4, 4);
     turn = 1;
     hint();
 }
-function createChess(x, y) {
+function createPiece(x, y) {
     board[x][y] = turn;
     const chess = document.createElement('div'),
         b = document.createElement('div'),
@@ -97,18 +97,19 @@ function play() {
     // 防止玩家點擊已翻過的棋子
     if (board[x][y] !== 0) { return; }
 
-    makeMove(x, y);
+    move(x, y);
 }
 
-function makeMove(x, y) {
-    if (move(x, y)) {
+function move(x, y) {
+    if (moveUtil(x, y)) {
         changeTurn();
         hint();
         timmer = setTimeout(ai, aiConfig.delay);
     }
 }
 
-function move(x, y, player = turn) {
+// return true if any pieces are flanked
+function moveUtil(x, y, player = turn) {
 
     let opponent = getOpponent(player);
     let flag = false;
@@ -147,14 +148,14 @@ function move(x, y, player = turn) {
                         let i = x, j = y;
 
                         if (board[i][j] == 0) {
-                            createChess(i, j);
+                            createPiece(i, j);
                         }
 
                         i += dx;
                         j += dy;
                         while (board[i][j] === opponent) {
                             board[i][j] = player;
-                            flipChess(i, j);
+                            flipPiece(i, j);
                             i += dx;
                             j += dy;
                         }
@@ -227,7 +228,7 @@ function isOutOfChessboard(x, y) {
     return false;
 }
 
-function flipChess(x, y) {
+function flipPiece(x, y) {
     board[x][y] = turn;
     document.getElementById("" + x + y).firstChild.classList.toggle('change');
 }
@@ -297,14 +298,14 @@ function getNumChess(board) {
 
 function endGame() {
     let msg = "";
-    const [numBlackChess, numWhiteChess] = getNumChess(board);
-    if (numBlackChess > numWhiteChess) {
+    const [numBlackPieces, numWhitePieces] = getNumChess(board);
+    if (numBlackPieces > numWhitePieces) {
         msg = "Black Wins<br>";
-    } else if (numBlackChess < numWhiteChess) {
+    } else if (numBlackPieces < numWhitePieces) {
         msg = "White Wins<br>";
     } else {
         msg = "Tie<br>";
     }
-    msg += `Black: ${numBlackChess}    White: ${numWhiteChess}`;
+    msg += `Black: ${numBlackPieces}    White: ${numWhitePieces}`;
     $messageBar.innerHTML = msg;
 }

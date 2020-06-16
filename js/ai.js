@@ -34,7 +34,7 @@ function ai() {
         default:
             console.error("Can't find ", aiMode);
     }
-    makeMove(avalSpots[spot][0], avalSpots[spot][1]);
+    move(avalSpots[spot][0], avalSpots[spot][1]);
 }
 
 
