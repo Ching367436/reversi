@@ -1,12 +1,12 @@
 const stepScore = [
-    [999, -50, -3, 2, 1, -3, -50, 999],
-    [-50, -100, 7, 5, 5, 7, -100, -50],
-    [3, 7, 52, 50, 30, 47, 7, 3],
-    [3, 9, 50, 0, 0, 50, 8, 3],
-    [3, 8, 50, 0, 0, 50, 9, 3],
-    [3, 7, 40, 50, 30, 52, 7, 3],
-    [-50, -100, 7, 5, 5, 7, -100, -50],
-    [999, -50, -4, 3, 2, -3, -50, 999]
+    [17, 2, 3, 3, 3, 3, 2, 17],
+    [2, 1, 4, 4, 4, 4, 1, 2],
+    [3, 4, 5, 5, 5, 5, 4, 3],
+    [3, 4, 5, 0, 0, 5, 4, 3],
+    [3, 4, 5, 0, 0, 5, 4, 3],
+    [3, 4, 5, 5, 5, 5, 4, 3],
+    [2, 1, 4, 4, 4, 4, 1, 2],
+    [17, 2, 3, 3, 3, 3, 2, 17]
 ];
 
 function getAvailibleSpots(player, board) {
@@ -47,4 +47,40 @@ function getMaxScoreSpot(avalSpots) {
         }
     }
     return maxSpot;
+}
+
+function evaluate(player, board) {
+    let opponent = getOpponent(player);
+    if (checkPass(player, board) && checkPass(opponent, board)) {
+        // game is over
+        const [numBlackPieces, numWhitePieces] = getNumChess(board);
+        if (numBlackPieces > numWhitePieces) {
+            if (player === black) {
+                return 99999;
+            } else {
+                return -99999;
+            }
+        } else if (numBlackPieces < numWhitePieces) {
+            if (player === black) {
+                return -99999;
+            } else {
+                return 99999;
+            }
+        } else {
+            return 0;
+        }
+
+    }
+
+    let score = 0;
+    const playerAvailSpots = getAvailibleSpots(player, board);
+    for (i of playerAvailSpots) {
+        score += stepScore[i[0]][i[1]];
+    }
+
+    const opponentAvailSpots = getAvailibleSpots(opponent, board);
+    for (i of opponentAvailSpots) {
+        score -= stepScore[i[0]][i[1]];
+    }
+    return score;
 }
