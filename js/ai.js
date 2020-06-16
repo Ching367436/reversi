@@ -2,7 +2,7 @@ function getAvailibleSpots(player, board) {
     let availSpots = []
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
-            if (checkSpotAvalible(i, j, player, board)) {
+            if (checkSpotAvailible(i, j, player, board)) {
                 availSpots.push([i, j]);
             }
         }

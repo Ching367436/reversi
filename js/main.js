@@ -169,7 +169,7 @@ function moveUtil(x, y, player = turn) {
     return flag;
 }
 
-function checkSpotAvalible(x, y, player = turn, board = board) {
+function checkSpotAvailible(x, y, player = turn, board = board) {
     // check if is empty
     if (board[x][y]) {
         return false;
@@ -241,7 +241,7 @@ function hint() {
     }
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
-            if (board[i][j] === 0 && checkSpotAvalible(i, j, turn, board)) {
+            if (board[i][j] === 0 && checkSpotAvailible(i, j, turn, board)) {
                 document.getElementById('' + i + j).classList.add('active');
             }
         }
@@ -272,7 +272,7 @@ function changeTurn() {
 function checkPass(player, board) {
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
-            if (checkSpotAvalible(i, j, player, board)) {
+            if (checkSpotAvailible(i, j, player, board)) {
                 return false;
             }
         }
