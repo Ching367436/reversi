@@ -1,13 +1,13 @@
-function getAvalibleSpots(player, board) {
-    let avalSpots = []
+function getAvailibleSpots(player, board) {
+    let availSpots = []
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
             if (checkSpotAvalible(i, j, player, board)) {
-                avalSpots.push([i, j]);
+                availSpots.push([i, j]);
             }
         }
     }
-    return avalSpots;
+    return availSpots;
 }
 
 function ai() {
@@ -21,7 +21,7 @@ function ai() {
     }
 
     let spot;
-    avalSpots = getAvalibleSpots(turn, board);
+    avalSpots = getAvailibleSpots(turn, board);
     if (avalSpots.length === 0) { return false; }
 
     switch (aiMode) {
@@ -38,8 +38,8 @@ function ai() {
 }
 
 
-function getRandomSpot(avalSpots) {
-    const len = avalSpots.length;
+function getRandomSpot(availSpots) {
+    const len = availSpots.length;
     let spot = getRandomNumber(0, len);
     return spot;
 }
