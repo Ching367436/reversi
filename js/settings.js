@@ -5,6 +5,11 @@ let aiConfig = {
 };
 loadSettings();
 
+window.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+        applySettings();
+    }
+});
 
 function loadSettings() {
     if (localStorage.getItem("aiConfig") !== null) {
@@ -16,14 +21,16 @@ function loadSettings() {
 }
 
 document.querySelector('#ok')
-    .addEventListener("click", () => {
-        aiConfig.black = document.querySelector("#blackAi").value;
-        aiConfig.white = document.querySelector("#whiteAi").value;
-        aiConfig.delay = parseFloat(document.querySelector("#delay").value) * 1000;
-        document.querySelector("#configBoard").style.display = "none";
-        ai();
-        localStorage.setItem("aiConfig", JSON.stringify(aiConfig));
-    });
+    .addEventListener("click", applySettings);
+
+function applySettings() {
+    aiConfig.black = document.querySelector("#blackAi").value;
+    aiConfig.white = document.querySelector("#whiteAi").value;
+    aiConfig.delay = parseFloat(document.querySelector("#delay").value) * 1000;
+    document.querySelector("#configBoard").style.display = "none";
+    ai();
+    localStorage.setItem("aiConfig", JSON.stringify(aiConfig));
+}
 
 document.querySelector('#settings')
     .addEventListener("click", () => {
