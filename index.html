@@ -9,6 +9,7 @@
     <meta name="keyword" content="Reversi">
     <meta name="discription" content="Reversi">
     <link rel="shortcut icon" type="images/x-icon" href="https://ching367436.github.io/icon/Ching367436.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168931196-3"></script>
@@ -38,13 +39,15 @@
             <option value="none">No AI</option>
             <option value="random">Random</option>
             <option value="maxScoreSpot">maxScoreSpot</option>
+            <option value="negamax">negamax</option>
         </select><br><br>
 
         <label for="whiteAi">White</label>
         <select name="whiteAi" id="whiteAi">
             <option value="none">No AI</option>
             <option value="random">Random</option>
-            <option value="maxScoreSpot" selected>maxScoreSpot</option>
+            <option value="maxScoreSpot">maxScoreSpot</option>
+            <option value="negamax" selected>negamax</option>
         </select><br>
         <br>
         <label for="delay">AI time delay: </label>
@@ -59,6 +62,7 @@
     <script src="./js/ai.js" defer></script>
     <script src="./js/aiUtil.js"></script>
     <script src="./js/settings.js"></script>
+    <script src="./js/negamax.js"></script>
 </body>
 
 </html>

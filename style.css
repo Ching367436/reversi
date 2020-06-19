@@ -14,7 +14,7 @@ body {
 #chess-board > div {
     border: 1px solid #000;
     float: left;
-    width: calc(12.5% - 2px);
+    width: calc(12.5% - 5px);
     background-color: #0a0;
     transition: background-color .3s;
 }
