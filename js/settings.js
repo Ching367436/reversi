@@ -3,6 +3,18 @@ let aiConfig = {
     white: "none",
     delay: 800
 };
+loadSettings();
+
+
+function loadSettings() {
+    if (localStorage.getItem("aiConfig") !== null) {
+        aiConfig = JSON.parse(localStorage.getItem("aiConfig"));
+    }
+    document.querySelector("#blackAi").value = aiConfig.black;
+    document.querySelector("#whiteAi").value = aiConfig.white;
+    document.querySelector("#delay").value = aiConfig.delay / 1000;
+}
+
 document.querySelector('#ok')
     .addEventListener("click", () => {
         aiConfig.black = document.querySelector("#blackAi").value;
@@ -10,6 +22,7 @@ document.querySelector('#ok')
         aiConfig.delay = parseFloat(document.querySelector("#delay").value) * 1000;
         document.querySelector("#configBoard").style.display = "none";
         ai();
+        localStorage.setItem("aiConfig", JSON.stringify(aiConfig));
     });
 
 document.querySelector('#settings')
