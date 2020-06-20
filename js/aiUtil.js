@@ -37,11 +37,10 @@ function getMaxScoreSpot(avalSpots) {
     }
     return maxSpot;
 }
-// return true if any pieces are flanked
+
 function aiMove(x, y, player, board) {
 
     const opponent = getOpponent(player);
-    let flag = false;
     // top left
     let dx = -1, dy = -1;
 
@@ -71,10 +70,8 @@ function aiMove(x, y, player, board) {
 
                 if (!isOutOfChessboard(i, j)) {
                     if (board[i][j] === player) {
-                        if (!flag) {
-                            flag = true;
-                        }
                         let i = x, j = y;
+                        board[i][j] = player;
 
                         i += dx;
                         j += dy;
@@ -90,7 +87,6 @@ function aiMove(x, y, player, board) {
         }
         dx++;
     }
-    return flag;
 }
 
 
