@@ -36,7 +36,7 @@ function windowResize() {
     }
 }
 function createChessBoard() {
-    const boardPartWidth = Math.floor($chessboard.offsetWidth / 8 - 2) + 'px';
+    const boardPartWidth = Math.floor(($chessboard.offsetWidth / 8) * 0.952) + 'px';
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
             const boardPart = document.createElement('div');

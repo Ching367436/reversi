@@ -14,7 +14,7 @@ body {
 #chess-board > div {
     border: 1px solid #000;
     float: left;
-    width: calc(12.5% - 5px);
+    width: 11.9%;
     background-color: #0a0;
     transition: background-color .3s;
 }
@@ -85,7 +85,7 @@ body {
 }
 
 #configBoard {
-    font-size: 5vw;
+    font-size: 3vw;
     padding: 1vw;
     margin: 0;
     opacity: 1;
