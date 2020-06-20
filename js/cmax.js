@@ -2,12 +2,16 @@ function getCmaxStep(availSpots, player, board, depth = 0) {
     const opponent = getOpponent(player);
     let bestScore = -99999;
     let bestSpotIndex = 0;
+    let
+        alpha = -999999,
+        beta = 999999;
+    console.countReset("pruned");
 
     let debScore = [];
     for (let i = 0; i < availSpots.length; i++) {
         const newBoard = copyBoard(board);
         aiMove(availSpots[i][0], availSpots[i][1], player, newBoard);
-        const currentScore = -cmax(opponent, newBoard, depth);
+        const currentScore = -cmax(opponent, newBoard, depth, -beta, -alpha);
         if (currentScore > bestScore) {
             bestScore = currentScore;
             bestSpotIndex = i;
@@ -18,7 +22,7 @@ function getCmaxStep(availSpots, player, board, depth = 0) {
     console.log(debScore);
     return bestSpotIndex;
 }
-function cmax(player, board, depth = 0) {
+function cmax(player, board, depth = 0, alpha = -999999, beta = 999999) {
     if (depth <= 0) {
         return evaluate1(player, board);
     }
@@ -29,7 +33,7 @@ function cmax(player, board, depth = 0) {
             // game is over
             return evaluate1(player, board);
         } else {
-            return -cmax(player, board, depth - 1);
+            return -cmax(player, board, depth - 1, -beta, -alpha);
         }
     }
 
@@ -39,9 +43,14 @@ function cmax(player, board, depth = 0) {
     for (i of availSpots) {
         const newBoard = copyBoard(board);
         aiMove(i[0], i[1], player, newBoard);
-        const currentScore = -cmax(opponent, newBoard, depth - 1);
+        const currentScore = -cmax(opponent, newBoard, depth - 1, -beta, -alpha);
         if (currentScore > bestScore) {
             bestScore = currentScore;
+            alpha = bestScore;
+        }
+        if (alpha >= beta) {
+            console.count("pruned");
+            break;
         }
     }
 
