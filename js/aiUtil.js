@@ -1,14 +1,3 @@
-const stepScore = [
-    [17, 2, 3, 3, 3, 3, 2, 17],
-    [2, 1, 4, 4, 4, 4, 1, 2],
-    [3, 4, 5, 5, 5, 5, 4, 3],
-    [3, 4, 5, 0, 0, 5, 4, 3],
-    [3, 4, 5, 0, 0, 5, 4, 3],
-    [3, 4, 5, 5, 5, 5, 4, 3],
-    [2, 1, 4, 4, 4, 4, 1, 2],
-    [17, 2, 3, 3, 3, 3, 2, 17]
-];
-
 function getAvailibleSpots(player, board) {
     let availSpots = []
     for (let i = 0; i < 8; i++) {
@@ -48,39 +37,80 @@ function getMaxScoreSpot(avalSpots) {
     }
     return maxSpot;
 }
+// return true if any pieces are flanked
+function aiMove(x, y, player, board) {
 
-function evaluate(player, board) {
-    let opponent = getOpponent(player);
-    if (checkPass(player, board) && checkPass(opponent, board)) {
-        // game is over
-        const [numBlackPieces, numWhitePieces] = getNumChess(board);
-        if (numBlackPieces > numWhitePieces) {
-            if (player === black) {
-                return 99999;
-            } else {
-                return -99999;
+    const opponent = getOpponent(player);
+    let flag = false;
+    // top left
+    let dx = -1, dy = -1;
+
+    // treverse throught all dirrections
+    while (dx <= 1) {
+        dy = -1;
+        while (dy <= 1) {
+            if (dx === 0 && dy === 0) {
+                dy++;
+                continue;
             }
-        } else if (numBlackPieces < numWhitePieces) {
-            if (player === black) {
-                return -99999;
-            } else {
-                return 99999;
+
+            let i = x, j = y;
+            i += dx;
+            j += dy;
+            if (isOutOfChessboard(i, j)) { dy++; continue; }
+            if (board[i][j] === opponent) {
+                i += dx;
+                j += dy;
+                if (isOutOfChessboard(i, j)) { dy++; continue; }
+
+                while (board[i][j] === opponent) {
+                    i += dx;
+                    j += dy;
+                    if (isOutOfChessboard(i, j)) { break; }
+                }
+
+                if (!isOutOfChessboard(i, j)) {
+                    if (board[i][j] === player) {
+                        if (!flag) {
+                            flag = true;
+                        }
+                        let i = x, j = y;
+
+                        i += dx;
+                        j += dy;
+                        while (board[i][j] === opponent) {
+                            board[i][j] = player;
+                            i += dx;
+                            j += dy;
+                        }
+                    }
+                }
             }
-        } else {
-            return 0;
+            dy++;
         }
-
+        dx++;
     }
-
-    let score = 0;
-    const playerAvailSpots = getAvailibleSpots(player, board);
-    for (i of playerAvailSpots) {
-        score += stepScore[i[0]][i[1]];
-    }
-
-    const opponentAvailSpots = getAvailibleSpots(opponent, board);
-    for (i of opponentAvailSpots) {
-        score -= stepScore[i[0]][i[1]];
-    }
-    return score;
+    return flag;
 }
+
+
+function copyBoard(board) {
+    let newBoard = [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+    ];
+    for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+            newBoard[i][j] = board[i][j];
+        }
+    }
+    return newBoard;
+}
+
+

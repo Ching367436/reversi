@@ -39,7 +39,7 @@
             <option value="none">No AI</option>
             <option value="random">Random</option>
             <option value="maxScoreSpot">maxScoreSpot</option>
-            <option value="negamax">negamax</option>
+            <option value="cmax">Ching's max</option>
         </select><br><br>
 
         <label for="whiteAi">White</label>
@@ -47,7 +47,7 @@
             <option value="none">No AI</option>
             <option value="random">Random</option>
             <option value="maxScoreSpot">maxScoreSpot</option>
-            <option value="negamax" selected>negamax</option>
+            <option value="cmax" selected>Ching's max</option>
         </select><br>
         <br>
         <label for="delay">AI time delay: </label>
@@ -62,7 +62,8 @@
     <script src="./js/ai.js" defer></script>
     <script src="./js/aiUtil.js"></script>
     <script src="./js/settings.js"></script>
-    <script src="./js/negamax.js"></script>
+    <script src="./js/cmax.js"></script>
+    <script src="./js/evaluate.js"></script>
 </body>
 
 </html>

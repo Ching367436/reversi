@@ -9,18 +9,21 @@ function ai() {
     }
 
     let spot;
-    avalSpots = getAvailibleSpots(turn, board);
-    if (avalSpots.length === 0) { return false; }
+    const availSpots = getAvailibleSpots(turn, board);
+    if (availSpots.length === 0) { return false; }
 
     switch (aiMode) {
         case "random":
-            spot = getRandomSpot(avalSpots);
+            spot = getRandomSpot(availSpots);
             break;
         case "maxScoreSpot":
-            spot = getMaxScoreSpot(avalSpots);
+            spot = getMaxScoreSpot(availSpots);
+            break;
+        case "cmax":
+            spot = getCmaxStep(availSpots, turn, board, depth = 3);
             break;
         default:
             console.error("Can't find ", aiMode);
     }
-    move(avalSpots[spot][0], avalSpots[spot][1]);
+    move(availSpots[spot][0], availSpots[spot][1]);
 }
