@@ -17,7 +17,6 @@ function getCmaxStep(availSpots, player, board, depth = 0, eval) {
         }
         debScore.push(currentScore);
     }
-    console.countReset("pruned");
     console.log(availSpots);
     console.log(debScore);
     return bestSpotIndex;
@@ -49,7 +48,6 @@ function cmax(player, board, depth = 0, alpha = -999999, beta = 999999, eval) {
             alpha = bestScore;
         }
         if (alpha >= beta) {
-            console.count("pruned");
             break;
         }
     }
