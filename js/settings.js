@@ -1,7 +1,7 @@
 let aiConfig = {
     black: "none",
     white: "cmax_ev3",
-    delay: 800
+    delay: 500
 };
 const aiMap = new Map([
     ["none", "No AI"],
