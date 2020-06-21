@@ -19,8 +19,11 @@ function ai() {
         case "maxScoreSpot":
             spot = getMaxScoreSpot(availSpots);
             break;
-        case "cmax":
-            spot = getCmaxStep(availSpots, turn, board, depth = 5);
+        case "cmax_ev1":
+            spot = getCmaxStep(availSpots, turn, board, depth = 5, evaluate1);
+            break;
+        case "cmax_ev2":
+            spot = getCmaxStep(availSpots, turn, board, depth = 5, evaluate2);
             break;
         default:
             console.error("Can't find ", aiMode);
