@@ -14,7 +14,7 @@ function evaluate1(player, board) {
     const opponent = getOpponent(player);
     if (checkPass(player, board) && checkPass(opponent, board)) {
         // game is over
-        const [numBlackPieces, numWhitePieces] = getNumChess(board);
+        const [numBlackPieces, numWhitePieces] = getNumPieces(board);
         if (numBlackPieces > numWhitePieces) {
             if (player === black) {
                 return 99999;
@@ -52,7 +52,7 @@ function evaluate2(player, board) {
     const opponent = getOpponent(player);
     if (checkPass(player, board) && checkPass(opponent, board)) {
         // game is over
-        const [numBlackPieces, numWhitePieces] = getNumChess(board);
+        const [numBlackPieces, numWhitePieces] = getNumPieces(board);
         if (numBlackPieces > numWhitePieces) {
             if (player === black) {
                 return 99999;
@@ -83,4 +83,11 @@ function evaluate2(player, board) {
         }
     }
     return score;
+}
+
+function evaluate3(player, board) {
+    const [numBlackPieces, numWhitePieces] = getNumPieces(board);
+    const numPieces = numBlackPieces + numWhitePieces;
+    const alpha = (1 - sigmoid(numPieces - 32));
+    return alpha * evaluate1(player, board) + (1 - alpha) * evaluate2(player, board);
 }

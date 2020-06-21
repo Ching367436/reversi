@@ -25,6 +25,8 @@ function ai() {
         case "cmax_ev2":
             spot = getCmaxStep(availSpots, turn, board, depth = 5, evaluate2);
             break;
+        case "cmax_ev3":
+            spot = getCmaxStep(availSpots, turn, board, depth = 5, evaluate3);
         default:
             console.error("Can't find ", aiMode);
     }

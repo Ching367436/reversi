@@ -280,7 +280,7 @@ function checkPass(player, board) {
     return true;
 }
 
-function getNumChess(board) {
+function getNumPieces(board) {
     let
         b = 0,
         w = 0;
@@ -298,7 +298,7 @@ function getNumChess(board) {
 
 function endGame() {
     let msg = "";
-    const [numBlackPieces, numWhitePieces] = getNumChess(board);
+    const [numBlackPieces, numWhitePieces] = getNumPieces(board);
     if (numBlackPieces > numWhitePieces) {
         msg = "Black Wins<br>";
     } else if (numBlackPieces < numWhitePieces) {
