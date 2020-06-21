@@ -94,7 +94,7 @@ function evaluate3(player, board) {
 }
 
 function getAlpha(numPieces) {
-    const b = -1, w = 1 / 7;
+    const b = -3, w = 1 / 15;
     const alpha = (1 - sigmoid(w * numPieces + b));
     if (alpha < 0.1) {
         return 0;
