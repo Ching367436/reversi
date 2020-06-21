@@ -1,6 +1,8 @@
+let pruned = 0;
 function getCmaxStep(availSpots, player, board, depth = 0, eval) {
     if (availSpots.length === 1) { return 0; }
 
+    pruned = 0;
     const opponent = getOpponent(player);
     let bestScore = -99999;
     let bestSpotIndex = 0;
@@ -8,7 +10,8 @@ function getCmaxStep(availSpots, player, board, depth = 0, eval) {
         alpha = -999999,
         beta = 999999;
 
-    let debScore = [];
+    // sortAvailSpots(availSpots);
+
     for (let i = 0; i < availSpots.length; i++) {
         const newBoard = copyBoard(board);
         aiMove(availSpots[i][0], availSpots[i][1], player, newBoard);
@@ -17,9 +20,9 @@ function getCmaxStep(availSpots, player, board, depth = 0, eval) {
             bestScore = currentScore;
             bestSpotIndex = i;
         }
-        debScore.push(currentScore);
     }
-    console.log(debScore);
+    console.log("score: ", bestScore);
+    console.log("pruned: ", pruned);
     return bestSpotIndex;
 }
 function cmax(player, board, depth = 0, alpha = -999999, beta = 999999, eval) {
@@ -49,10 +52,25 @@ function cmax(player, board, depth = 0, alpha = -999999, beta = 999999, eval) {
             alpha = bestScore;
         }
         if (alpha >= beta) {
+            ++pruned;
             break;
         }
     }
 
     return bestScore;
+
+}
+
+function sortAvailSpots(availSpots, player, board, eval) {
+    availSpots.sort((a, b) => {
+        let newBoard = copyBoard(board);
+        aiMove(a[0], a[1], player, newBoard);
+        const ea = eval(player, newBoard)
+        newBoard = copyBoard(board);
+        aiMove(b[0], b[1], player, newBoard);
+        const eb = eval(player, newBoard);
+
+        return ea - eb;
+    })
 
 }
