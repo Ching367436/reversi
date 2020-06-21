@@ -1,8 +1,16 @@
 let aiConfig = {
     black: "none",
-    white: "none",
+    white: "cmax_ev3",
     delay: 800
 };
+const aiMap = new Map([
+    ["none", "No AI"],
+    ["random", "Random"],
+    ["cmax_ev1", "Ching's Max ev1"],
+    ["cmax_ev2", "Ching's Max ev2"],
+    ["cmax_ev3", "Ching's Max ev3"]
+])
+
 loadSettings();
 
 window.addEventListener("keydown", function (e) {
@@ -12,6 +20,14 @@ window.addEventListener("keydown", function (e) {
 });
 
 function loadSettings() {
+    for ([name, displayName] of aiMap) {
+        const option = document.createElement("option");
+        option.value = name;
+        option.innerHTML = displayName;
+        document.querySelector("#blackAi").appendChild(option);
+        document.querySelector("#whiteAi").appendChild(option.cloneNode(true));
+    }
+
     if (localStorage.getItem("aiConfig") !== null) {
         aiConfig = JSON.parse(localStorage.getItem("aiConfig"));
     }
