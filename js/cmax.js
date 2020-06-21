@@ -1,4 +1,6 @@
 function getCmaxStep(availSpots, player, board, depth = 0, eval) {
+    if (availSpots.length === 1) { return 0; }
+
     const opponent = getOpponent(player);
     let bestScore = -99999;
     let bestSpotIndex = 0;
