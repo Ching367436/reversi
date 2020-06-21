@@ -19,7 +19,6 @@ function getCmaxStep(availSpots, player, board, depth = 0, eval) {
         }
         debScore.push(currentScore);
     }
-    console.log(availSpots);
     console.log(debScore);
     return bestSpotIndex;
 }
