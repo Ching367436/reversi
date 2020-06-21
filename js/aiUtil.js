@@ -91,7 +91,7 @@ function aiMove(x, y, player, board) {
 
 
 function copyBoard(board) {
-    let newBoard = [
+    const newBoard = [
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],

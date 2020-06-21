@@ -20,7 +20,7 @@ function ai() {
             spot = getMaxScoreSpot(availSpots);
             break;
         case "cmax":
-            spot = getCmaxStep(availSpots, turn, board, depth = 3);
+            spot = getCmaxStep(availSpots, turn, board, depth = 5);
             break;
         default:
             console.error("Can't find ", aiMode);
