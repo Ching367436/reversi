@@ -88,6 +88,17 @@ function evaluate2(player, board) {
 function evaluate3(player, board) {
     const [numBlackPieces, numWhitePieces] = getNumPieces(board);
     const numPieces = numBlackPieces + numWhitePieces;
-    const alpha = (1 - sigmoid(numPieces - 32));
+
+    const alpha = getAlpha(numPieces);
     return alpha * evaluate1(player, board) + (1 - alpha) * evaluate2(player, board);
+}
+
+function getAlpha(numPieces) {
+    const b = -1, w = 1 / 7;
+    const alpha = (1 - sigmoid(w * numPieces + b));
+    if (alpha < 0.1) {
+        return 0;
+    } else {
+        return alpha;
+    }
 }
