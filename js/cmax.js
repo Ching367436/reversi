@@ -36,7 +36,7 @@ function cmax(player, board, depth = 0, alpha = -999999, beta = 999999, eval) {
             // game is over
             return eval(player, board);
         } else {
-            return -cmax(player, board, depth - 1, -beta, -alpha, eval);
+            return -cmax(player, board, depth, -beta, -alpha, eval);
         }
     }
 
