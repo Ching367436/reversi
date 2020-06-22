@@ -8,7 +8,8 @@ const aiMap = new Map([
     ["random", "Random"],
     ["cmax_ev1", "Ching's Max ev1"],
     ["cmax_ev2", "Ching's Max ev2"],
-    ["cmax_ev3", "Ching's Max ev3"]
+    ["cmax_ev3", "Ching's Max ev3"],
+    ["cmin_ev3", "Ching's Min ev3"]
 ])
 
 loadSettings();

@@ -28,6 +28,9 @@ function ai() {
         case "cmax_ev3":
             spot = getCmaxStep(availSpots, turn, board, depth = 5, evaluate3);
             break;
+        case "cmin_ev3":
+            spot = getCminStep(availSpots, turn, board, depth = 5, evaluate3);
+            break;
         default:
             console.error("Can't find ", aiMode);
     }
