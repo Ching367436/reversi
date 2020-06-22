@@ -15,7 +15,7 @@ function getCmaxStep(availSpots, player, board, depth = 0, eval) {
     for (let i = 0; i < availSpots.length; i++) {
         const newBoard = copyBoard(board);
         aiMove(availSpots[i][0], availSpots[i][1], player, newBoard);
-        const currentScore = -cmax(opponent, newBoard, depth - 1, -beta, -alpha, eval);
+        const currentScore = -cmax(opponent, newBoard, depth, -beta, -alpha, eval);
         if (currentScore > bestScore) {
             bestScore = currentScore;
             bestSpotIndex = i;
@@ -36,7 +36,7 @@ function cmax(player, board, depth = 0, alpha = -999999, beta = 999999, eval) {
             // game is over
             return eval(player, board);
         } else {
-            return -cmax(player, board, depth, -beta, -alpha, eval);
+            return -cmax(player, board, depth-1, -beta, -alpha, eval);
         }
     }
 
