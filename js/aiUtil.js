@@ -1,3 +1,4 @@
+"use strict";
 function getAvailibleSpots(player, board) {
     let availSpots = []
     for (let i = 0; i < 8; i++) {

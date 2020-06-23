@@ -1,3 +1,4 @@
+"use strict";
 let aiConfig = {
     black: "none",
     white: "cmax_ev3",
@@ -21,7 +22,7 @@ window.addEventListener("keydown", function (e) {
 });
 
 function loadSettings() {
-    for ([name, displayName] of aiMap) {
+    for (const [name, displayName] of aiMap) {
         const option = document.createElement("option");
         option.value = name;
         option.innerHTML = displayName;

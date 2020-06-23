@@ -1,3 +1,4 @@
+"use strict";
 const $chessboard = document.getElementById('chess-board');
 const $messageBar = document.getElementById('message');
 const $pass = document.querySelector('#pass');

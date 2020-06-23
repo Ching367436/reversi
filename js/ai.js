@@ -1,3 +1,5 @@
+"use strict";
+const depth = 5;
 function ai() {
     let aiMode;
     if (turn === black && aiConfig.black !== "none") {
@@ -20,16 +22,16 @@ function ai() {
             spot = getMaxScoreSpot(availSpots);
             break;
         case "cmax_ev1":
-            spot = getCmaxStep(availSpots, turn, board, depth = 5, evaluate1);
+            spot = getCmaxStep(availSpots, turn, board, depth, evaluate1);
             break;
         case "cmax_ev2":
-            spot = getCmaxStep(availSpots, turn, board, depth = 5, evaluate2);
+            spot = getCmaxStep(availSpots, turn, board, depth, evaluate2);
             break;
         case "cmax_ev3":
-            spot = getCmaxStep(availSpots, turn, board, depth = 5, evaluate3);
+            spot = getCmaxStep(availSpots, turn, board, depth, evaluate3);
             break;
         case "cmin_ev3":
-            spot = getCminStep(availSpots, turn, board, depth = 5, evaluate3);
+            spot = getCminStep(availSpots, turn, board, depth, evaluate3);
             break;
         default:
             console.error("Can't find ", aiMode);

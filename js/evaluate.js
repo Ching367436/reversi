@@ -1,3 +1,4 @@
+"use strict";
 const stepScore = [
     [100, 2, 3, 3, 3, 3, 2, 100],
     [2, 0, 4, 4, 4, 4, 0, 2],
@@ -35,12 +36,12 @@ function evaluate1(player, board) {
 
     let score = 0;
     const playerAvailSpots = getAvailibleSpots(player, board);
-    for (i of playerAvailSpots) {
+    for (const i of playerAvailSpots) {
         score += stepScore[i[0]][i[1]];
     }
 
     const opponentAvailSpots = getAvailibleSpots(opponent, board);
-    for (i of opponentAvailSpots) {
+    for (const i of opponentAvailSpots) {
         score -= stepScore[i[0]][i[1]];
     }
     return score;
