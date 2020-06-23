@@ -85,7 +85,7 @@ body {
 }
 
 #configBoard {
-    font-size: 3vw;
+    font-size: 3.5vw;
     padding: 1vw;
     margin: 0;
     opacity: 1;
@@ -106,8 +106,18 @@ body {
     display: inline;
     background-color: #0a0;
     cursor: pointer;
-    border: .2vw solid #ccc;
-    border-radius: 20%;
+    border: .3vw solid #ccc;
+}
+
+#about {
+    text-decoration: none;
+    color: #fff;
+    padding: .5vw;
+    display: inline;
+    background-color: #000;
+    border: .3vw solid #ccc;
+    border-radius: 2.5%;
+    cursor: pointer;
 }
 
 #settings{
