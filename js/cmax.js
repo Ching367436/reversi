@@ -3,6 +3,7 @@ let pruned = 0;
 function getCmaxStep(availSpots, player, board, depth = 0, evaluate) {
     if (availSpots.length === 1) { return 0; }
 
+    console.time("Ching's Max");
     pruned = 0;
     const opponent = getOpponent(player);
     let bestScore = -99999;
@@ -22,6 +23,7 @@ function getCmaxStep(availSpots, player, board, depth = 0, evaluate) {
             bestSpotIndex = i;
         }
     }
+    console.timeEnd("Ching's Max");
     console.log("score: ", bestScore);
     console.log("pruned: ", pruned);
     return bestSpotIndex;
