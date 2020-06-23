@@ -12,7 +12,6 @@ function getCmaxStep(availSpots, player, board, depth = 0, evaluate) {
         alpha = -999999,
         beta = 999999;
 
-    // sortAvailSpots(availSpots);
 
     for (let i = 0; i < availSpots.length; i++) {
         const newBoard = copyBoard(board);
