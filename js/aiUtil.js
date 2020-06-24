@@ -21,6 +21,12 @@ function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i >= 1; --i) {
+        const j = getRandomNumber(0, i + 1);
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+}
 
 function getMaxScoreSpot(avalSpots) {
     let maxSpot = 0;

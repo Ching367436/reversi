@@ -14,6 +14,8 @@ function ai() {
     const availSpots = getAvailibleSpots(turn, board);
     if (availSpots.length === 0) { return false; }
 
+    shuffleArray(availSpots);
+
     switch (aiMode) {
         case "random":
             spot = getRandomSpot(availSpots);
