@@ -16,8 +16,15 @@ const aiMap = new Map([
 loadSettings();
 
 window.addEventListener("keydown", function (e) {
-    if (e.keyCode === 13) {
-        applySettings();
+    switch (e.keyCode) {
+        case 13:    // enter
+            applySettings();
+            break;
+        case 83:    // s
+            // pause ai
+            clearTimeout(timmer);
+            document.querySelector("#configBoard").style.display = "block";
+            break;
     }
 });
 
