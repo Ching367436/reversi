@@ -24,11 +24,15 @@ window.addEventListener("keydown", function (e) {
             // pause ai
             clearTimeout(timmer);
             document.querySelector("#configBoard").style.display = "block";
+            document.querySelector("#settings").style.display = "none";
+            document.querySelector("#newGame").style.display = "none";
             break;
     }
 });
 
 function loadSettings() {
+    document.querySelector("#settings").style.display = "none";
+    document.querySelector("#newGame").style.display = "none";
     for (const [name, displayName] of aiMap) {
         const option = document.createElement("option");
         option.value = name;
@@ -53,6 +57,8 @@ function applySettings() {
     aiConfig.white = document.querySelector("#whiteAi").value;
     aiConfig.delay = parseFloat(document.querySelector("#delay").value) * 1000;
     document.querySelector("#configBoard").style.display = "none";
+    document.querySelector("#settings").style.display = "block";
+    document.querySelector("#newGame").style.display = "block";
     ai();
     localStorage.setItem("aiConfig", JSON.stringify(aiConfig));
 }
@@ -62,6 +68,8 @@ document.querySelector('#settings')
         // pause ai
         clearTimeout(timmer);
         document.querySelector("#configBoard").style.display = "block";
+        document.querySelector("#settings").style.display = "none";
+        document.querySelector("#newGame").style.display = "none";
     });
 document.querySelector('#newGame')
     .addEventListener("click", () => {
