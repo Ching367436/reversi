@@ -11,3 +11,12 @@ img.addEventListener('click', function (e) {
         img.src = imgs[current];
     }
 });
+
+for (let i = 1; i < imgs.length; ++i) {
+    const tmp = document.createElement("link");
+    tmp.rel = "preload";
+    tmp.href = imgs[i];
+    tmp.as = "image";
+    tmp.type = "image/png";
+    document.head.appendChild(tmp);
+}
