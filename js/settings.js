@@ -31,8 +31,6 @@ window.addEventListener("keydown", function (e) {
 });
 
 function loadSettings() {
-    document.querySelector("#settings").style.display = "none";
-    document.querySelector("#newGame").style.display = "none";
     for (const [name, displayName] of aiMap) {
         const option = document.createElement("option");
         option.value = name;
