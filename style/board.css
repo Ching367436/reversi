@@ -19,7 +19,6 @@ body {
     transition: background-color .3s;
 }
 
-
 #message {
     font-size: 3vw;
     color: #fff;
@@ -27,6 +26,7 @@ body {
     width: 100%;
     text-align: center;
 }
+
 #pass {
     position: fixed;
     top: 50%;
@@ -82,75 +82,4 @@ body {
 .active:hover {
     background-color: #0e0 !important;
     box-shadow: 0px 0px 10px 0px #030 inset;
-}
-
-#configBoard {
-    font-size: 2.5vw;
-    padding: 1vw;
-    margin: 0;
-    opacity: 1;
-    z-index: 10;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    height: 90%;
-    background-color: #000;
-    border: .3vw solid #ccc;
-    border-radius: 2.5%;
-}
-
-#ok {
-    padding: .5vw;
-    display: inline;
-    background-color: #0a0;
-    cursor: pointer;
-    border: .3vw solid #ccc;
-}
-
-#about {
-    text-decoration: none;
-    color: #fff;
-    padding: .5vw;
-    display: inline;
-    background-color: #000;
-    border: .3vw solid #ccc;
-    border-radius: 2.5%;
-    cursor: pointer;
-}
-
-#settings{
-    display: none;
-    z-index: 9;
-    margin: 0;
-    padding: 0.5vw;
-    position: fixed;
-    top: 1%;
-    right: 1%;
-    background-color: #000;
-    border: .3vw solid #ccc;
-    border-radius: 2.5%;
-    cursor: pointer;
-}
-#newGame{
-    display: none;
-    z-index: 8;
-    margin: 0;
-    padding: 0.5vw;
-    position: fixed;
-    top: 1%;
-    left: 1%;
-    background-color: #000;
-    border: .3vw solid #ccc;
-    border-radius: 2.5%;
-    cursor: pointer;
-}
-
-select {
-    font-size: 2vw;
-}
-
-input {
-    font-size: 2vw;
 }
