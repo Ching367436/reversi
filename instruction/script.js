@@ -1,6 +1,6 @@
 let img = document.querySelector('img'),
     current = 0;
-const imgs = ['./alpha_beta_pruning/1.png', './alpha_beta_pruning/2.png', './alpha_beta_pruning/3.png', './alpha_beta_pruning/4.png', './alpha_beta_pruning/5.png', './alpha_beta_pruning/6.png', './alpha_beta_pruning/7.png', './alpha_beta_pruning/8.png', './alpha_beta_pruning/9.png'];
+const imgs = ['./alpha_beta_pruning/1.webp', './alpha_beta_pruning/2.webp', './alpha_beta_pruning/3.webp', './alpha_beta_pruning/4.webp', './alpha_beta_pruning/5.webp', './alpha_beta_pruning/6.webp', './alpha_beta_pruning/7.webp', './alpha_beta_pruning/8.webp', './alpha_beta_pruning/9.webp'];
 
 img.addEventListener('click', function (e) {
     if (e.offsetX >= this.offsetWidth / 2) {
@@ -17,6 +17,6 @@ for (let i = 1; i < imgs.length; ++i) {
     tmp.rel = "preload";
     tmp.href = imgs[i];
     tmp.as = "image";
-    tmp.type = "image/png";
+    tmp.type = "image/webp";
     document.head.appendChild(tmp);
 }
