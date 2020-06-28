@@ -1,10 +1,7 @@
 "use strict";
-let pruned = 0;
 function getCmaxStep(availSpots, player, board, depth = 0, evaluate) {
     if (availSpots.length === 1) { return 0; }
 
-    console.time("Ching's Max");
-    pruned = 0;
     const opponent = getOpponent(player);
     let bestScore = -99999;
     let bestSpotIndex = 0;
@@ -15,16 +12,13 @@ function getCmaxStep(availSpots, player, board, depth = 0, evaluate) {
 
     for (let i = 0; i < availSpots.length; i++) {
         const newBoard = copyBoard(board);
-        aiMove(availSpots[i][0], availSpots[i][1], player, newBoard);
+        virtualMove(availSpots[i][0], availSpots[i][1], player, newBoard);
         const currentScore = -cmax(opponent, newBoard, depth, -beta, -alpha, evaluate);
         if (currentScore > bestScore) {
             bestScore = currentScore;
             bestSpotIndex = i;
         }
     }
-    console.timeEnd("Ching's Max");
-    console.log("score: ", bestScore);
-    console.log("pruned: ", pruned);
     return bestSpotIndex;
 }
 function cmax(player, board, depth = 0, alpha = -999999, beta = 999999, evaluate) {
@@ -47,18 +41,16 @@ function cmax(player, board, depth = 0, alpha = -999999, beta = 999999, evaluate
 
     for (const i of availSpots) {
         const newBoard = copyBoard(board);
-        aiMove(i[0], i[1], player, newBoard);
+        virtualMove(i[0], i[1], player, newBoard);
         const currentScore = -cmax(opponent, newBoard, depth - 1, -beta, -alpha, evaluate);
         if (currentScore > bestScore) {
             bestScore = currentScore;
             alpha = bestScore;
         }
         if (alpha >= beta) {
-            ++pruned;
             break;
         }
     }
 
     return bestScore;
-
 }

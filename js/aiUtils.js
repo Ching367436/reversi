@@ -45,7 +45,7 @@ function getMaxScoreSpot(avalSpots) {
     return maxSpot;
 }
 
-function aiMove(x, y, player, board) {
+function virtualMove(x, y, player, board) {
 
     const opponent = getOpponent(player);
     // top left

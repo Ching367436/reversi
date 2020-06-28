@@ -2,7 +2,6 @@
 function getCminStep(availSpots, player, board, depth = 0, evaluate) {
     if (availSpots.length === 1) { return 0; }
 
-    pruned = 0;
     const opponent = getOpponent(player);
     let minScore = 99999;
     let minSpotIndex = 0;
@@ -12,15 +11,13 @@ function getCminStep(availSpots, player, board, depth = 0, evaluate) {
 
     for (let i = 0; i < availSpots.length; i++) {
         const newBoard = copyBoard(board);
-        aiMove(availSpots[i][0], availSpots[i][1], player, newBoard);
+        virtualMove(availSpots[i][0], availSpots[i][1], player, newBoard);
         const currentScore = -cmin(opponent, newBoard, depth, -beta, -alpha, evaluate);
         if (currentScore < minScore) {
             minScore = currentScore;
             minSpotIndex = i;
         }
     }
-    console.log("score: ", minScore);
-    console.log("pruned: ", pruned);
     return minSpotIndex;
 }
 function cmin(player, board, depth = 0, alpha = -999999, beta = 999999, evaluate) {
@@ -50,7 +47,6 @@ function cmin(player, board, depth = 0, alpha = -999999, beta = 999999, evaluate
             alpha = minScore;
         }
         if (alpha <= beta) {
-            ++pruned;
             break;
         }
     }
