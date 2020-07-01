@@ -262,9 +262,9 @@ function changeTurn() {
     } else {
         turn = opponent;
         if (turn === 1) {
-            $messageBar.innerHTML = "Black's Move";
+            $messageBar.innerHTML = "Black's Turn";
         } else {
-            $messageBar.innerHTML = "White's Move";
+            $messageBar.innerHTML = "White's Turn";
         }
 
     }
