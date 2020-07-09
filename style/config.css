@@ -63,6 +63,7 @@
 
 select {
     font-size: 2vw;
+    -webkit-appearance: none;
 }
 
 input {
