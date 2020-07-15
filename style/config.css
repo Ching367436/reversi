@@ -20,7 +20,7 @@
     display: inline;
     background-color: #0a0;
     cursor: pointer;
-    border: .3vw solid #ccc;
+    border: .2vw solid #ccc;
 }
 
 #about {
@@ -29,7 +29,7 @@
     padding: .5vw;
     display: inline;
     background-color: #000;
-    border: .3vw solid #ccc;
+    border: .2vw solid #ccc;
     border-radius: 2.5%;
     cursor: pointer;
 }
@@ -63,9 +63,14 @@
 
 select {
     font-size: 2vw;
+    background-color: #000;
+    color: #ccc;
     -webkit-appearance: none;
 }
 
 input {
     font-size: 2vw;
+    background-color: #000;
+    color: #ccc;
+    -webkit-appearance: none;
 }
