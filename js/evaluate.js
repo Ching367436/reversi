@@ -1,5 +1,5 @@
 "use strict";
-const stepScore = [
+const scoreTable = [
     [100, 2, 3, 3, 3, 3, 2, 100],
     [2, 0, 4, 4, 4, 4, 0, 2],
     [3, 4, 5, 5, 5, 5, 4, 3],
@@ -37,12 +37,12 @@ function evaluate1(player, board) {
     let score = 0;
     const playerAvailSpots = getAvailibleSpots(player, board);
     for (const i of playerAvailSpots) {
-        score += stepScore[i[0]][i[1]];
+        score += scoreTable[i[0]][i[1]];
     }
 
     const opponentAvailSpots = getAvailibleSpots(opponent, board);
     for (const i of opponentAvailSpots) {
-        score -= stepScore[i[0]][i[1]];
+        score -= scoreTable[i[0]][i[1]];
     }
     return score;
 }
@@ -77,9 +77,9 @@ function evaluate2(player, board) {
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
             if (board[i][j] === player) {
-                score += stepScore[i][j];
+                score += scoreTable[i][j];
             } else if (board[i][j] === opponent) {
-                score -= stepScore[i][j];
+                score -= scoreTable[i][j];
             }
         }
     }
