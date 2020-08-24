@@ -40,7 +40,7 @@ function cmin(player, board, depth = 0, alpha = -999999, beta = 999999, evaluate
 
     for (const i of availSpots) {
         const newBoard = copyBoard(board);
-        aiMove(i[0], i[1], player, newBoard);
+        virtualMove(i[0], i[1], player, newBoard);
         const currentScore = -cmax(opponent, newBoard, depth - 1, -beta, -alpha, evaluate);
         if (currentScore < minScore) {
             minScore = currentScore;
