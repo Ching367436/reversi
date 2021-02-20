@@ -7,8 +7,11 @@
 
 ## 主網頁
 index.html
+
 style/
+
 js/
+
 
 ## 簡報 (keynote)
 presentation/
