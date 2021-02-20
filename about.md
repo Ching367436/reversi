@@ -30,3 +30,6 @@ title: Reversi
 
 ## Ching's Min ev3
 策略與 `Ching's Max ev3` 相同， 只是最大化的是對手的利益
+
+
+# [Play it!](https://ching367436.github.io/reversi/)
