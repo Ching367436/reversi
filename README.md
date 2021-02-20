@@ -11,6 +11,8 @@ index.html
 style/
 
 js/
+### AI 搜索
+js/cmax.js:24
 
 
 ## 簡報 (keynote)
