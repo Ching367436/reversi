@@ -1,5 +1,5 @@
 #configBoard {
-    font-size: 2.5vw;
+    font-size: 1.5rem;
     padding: 1vw;
     margin: 0;
     opacity: 1;
@@ -13,6 +13,7 @@
     background-color: #000;
     border: .3vw solid #ccc;
     border-radius: 2.5%;
+    overflow: scroll;
 }
 
 #ok {
@@ -20,7 +21,8 @@
     display: inline;
     background-color: #0a0;
     cursor: pointer;
-    border: .2vw solid #ccc;
+    border: .2rem solid #ccc;
+    font-size: 2.3rem;
 }
 
 #about {
@@ -29,9 +31,11 @@
     padding: .5vw;
     display: inline;
     background-color: #000;
-    border: .2vw solid #ccc;
+    border: .2rem solid #ccc;
     border-radius: 2.5%;
     cursor: pointer;
+    margin: .5rem;
+    font-size: 2.3rem;
 }
 
 #settings{
@@ -40,8 +44,8 @@
     margin: 0;
     padding: 0.5vw;
     position: fixed;
-    top: 1%;
-    right: 1%;
+    bottom: 1%;
+    left: 1%;
     background-color: #000;
     border: .3vw solid #ccc;
     border-radius: 2.5%;
@@ -53,8 +57,8 @@
     margin: 0;
     padding: 0.5vw;
     position: fixed;
-    top: 1%;
-    left: 1%;
+    bottom: 1%;
+    right: 1%;
     background-color: #000;
     border: .3vw solid #ccc;
     border-radius: 2.5%;
@@ -62,15 +66,16 @@
 }
 
 select {
-    font-size: 2vw;
+    font-size: 2rem;
     background-color: #000;
     color: #ccc;
     -webkit-appearance: none;
 }
 
 input {
-    font-size: 2vw;
+    font-size: 2rem;
     background-color: #000;
     color: #ccc;
     -webkit-appearance: none;
+    max-width: 70%;
 }

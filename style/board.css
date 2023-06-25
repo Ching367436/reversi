@@ -2,8 +2,12 @@ body {
     color: #fff;
     background-color: #000;
     text-align: center;
-    font-size: 2.3vw;
+    font-size: 2.3rem;
     user-select: none;
+}
+
+#configBoard > div {
+    padding-bottom: 1.7rem;
 }
 #chess-board {
     position: relative;
@@ -20,11 +24,11 @@ body {
 }
 
 #message {
-    font-size: 3vw;
     color: #fff;
     display: block;
     width: 100%;
     text-align: center;
+    margin: 1rem;
 }
 
 #pass {
